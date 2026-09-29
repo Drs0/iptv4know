@@ -1,0 +1,11 @@
+// ==========================================
+// IPTVNow Master SASS Entrypoint
+// All SCSS files in sass/ folder compiled to global.css
+// ==========================================
+
+@use 'variables';
+@use 'mixins';
+@use 'base';
+@use 'glass';
+@use 'animations';
+@use 'components';

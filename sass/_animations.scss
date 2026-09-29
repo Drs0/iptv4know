@@ -1,0 +1,55 @@
+// ==========================================
+// IPTVNow Animations & Keyframes
+// ==========================================
+@use 'variables' as *;
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.9);
+  }
+}
+
+@keyframes float-hero {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes border-shimmer {
+  0% {
+    border-color: rgba(0, 240, 255, 0.2);
+  }
+  50% {
+    border-color: rgba(112, 0, 255, 0.5);
+  }
+  100% {
+    border-color: rgba(0, 240, 255, 0.2);
+  }
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $accent-green;
+  display: inline-block;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+.floating-element {
+  animation: float-hero 6s ease-in-out infinite;
+}
+
+.shimmer-card {
+  animation: border-shimmer 4s ease-in-out infinite;
+}

@@ -1,0 +1,49 @@
+// ==========================================
+// IPTVNow SCSS Design Tokens & Variables
+// ==========================================
+
+// Color Palette (Futuristic Dark Cyber-Neon)
+$bg-dark: #08090e;
+$bg-card: rgba(18, 20, 32, 0.65);
+$bg-card-hover: rgba(28, 32, 52, 0.85);
+$bg-surface: #0e111a;
+$bg-glass: rgba(255, 255, 255, 0.04);
+$bg-glass-heavy: rgba(14, 17, 26, 0.85);
+
+$border-subtle: rgba(255, 255, 255, 0.08);
+$border-glow: rgba(0, 240, 255, 0.3);
+
+// Accent Colors
+$primary: #00f0ff;       // Neon Cyan
+$primary-glow: rgba(0, 240, 255, 0.4);
+$secondary: #7000ff;     // Neon Purple
+$accent-pink: #ff007a;    // Cyber Pink
+$accent-green: #00ff88;   // Live Green
+$accent-orange: #ff9900;  // Ultra HD Gold
+
+// Gradients
+$gradient-primary: linear-gradient(135deg, $primary 0%, $secondary 100%);
+$gradient-pink-purple: linear-gradient(135deg, $accent-pink 0%, $secondary 100%);
+$gradient-cyan-green: linear-gradient(135deg, $primary 0%, $accent-green 100%);
+$gradient-dark-glass: linear-gradient(180deg, rgba(14, 17, 26, 0.9) 0%, rgba(8, 9, 14, 0.95) 100%);
+
+// Typography
+$font-main: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+$font-mono: var(--font-geist-mono), monospace;
+
+// Transitions & Timing
+$transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+// Shadows & Glows
+$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+$shadow-glow-cyan: 0 0 25px rgba(0, 240, 255, 0.25);
+$shadow-glow-purple: 0 0 25px rgba(112, 0, 255, 0.3);
+$shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+// Border Radius
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 20px;
+$radius-full: 9999px;

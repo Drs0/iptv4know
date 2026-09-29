@@ -1,0 +1,79 @@
+// ==========================================
+// IPTVNow Glassmorphism & Surface Utilities
+// ==========================================
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.glass-panel {
+  @include glass-card(20px, rgba(16, 20, 32, 0.75));
+}
+
+.glass-nav {
+  background: rgba(8, 9, 14, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: $radius-full;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.glass-pill-active {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: rgba(0, 240, 255, 0.4);
+  color: $primary;
+}
+
+.glass-button-primary {
+  @include flex-center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: $radius-md;
+  background: $gradient-primary;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.35);
+  transition: all $transition-normal;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(0, 240, 255, 0.55);
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.glass-button-secondary {
+  @include flex-center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: $radius-md;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  backdrop-filter: blur(12px);
+  transition: all $transition-normal;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+}
