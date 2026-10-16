@@ -1058,3 +1058,349 @@ input, select, textarea {
   animation: pulse-glow 2s infinite ease-in-out;
   pointer-events: none;
 }
+
+.region-selector-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.region-selector-wrapper .region-selector-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  font-size: 0.825rem;
+  font-weight: 600;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
+}
+.region-selector-wrapper .region-selector-trigger:hover, .region-selector-wrapper .region-selector-trigger[aria-expanded=true] {
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.4);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.region-selector-wrapper .region-selector-trigger .trigger-flag {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+.region-selector-wrapper .region-selector-trigger .trigger-market {
+  color: #fff;
+}
+.region-selector-wrapper .region-selector-trigger .trigger-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+.region-selector-wrapper .region-selector-trigger .trigger-lang {
+  color: #00f0ff;
+  font-weight: 700;
+}
+.region-selector-wrapper .region-selector-trigger .trigger-chevron {
+  color: rgba(255, 255, 255, 0.6);
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.region-selector-wrapper .region-selector-trigger .trigger-chevron.open {
+  transform: rotate(180deg);
+}
+.region-selector-wrapper .region-selector-modal {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  width: 380px;
+  max-width: calc(100vw - 2rem);
+  background: rgba(13, 16, 28, 0.96);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(0, 240, 255, 0.15);
+  z-index: 1000;
+  padding: 1.25rem;
+  color: #e2e8f0;
+  animation: fadeIn 0.2s ease-out;
+}
+@media (max-width: 640px) {
+  .region-selector-wrapper .region-selector-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: calc(100vw - 2rem);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+.region-selector-wrapper .region-selector-modal .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-header .modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-header .modal-title-wrap h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+.region-selector-wrapper .region-selector-modal .modal-header .modal-close-btn {
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.25rem;
+  border-radius: 6px;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.region-selector-wrapper .region-selector-modal .modal-header .modal-close-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .selector-group .group-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.65rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .selector-group .group-label .label-title {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .selector-group .group-label .label-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #e2e8f0;
+  text-align: left;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn.active {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: #00f0ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn.active .market-name {
+  color: #00f0ff;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn .market-card-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn .market-card-inner .market-flag {
+  font-size: 1.25rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn .market-card-inner .market-info {
+  display: flex;
+  flex-direction: column;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn .market-card-inner .market-info .market-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn .market-card-inner .market-info .market-native {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn .market-card-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn .market-card-badge .currency-pill {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .market-card-btn .market-card-badge .check-icon {
+  color: #00f0ff;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .lang-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.5rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .lang-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #e2e8f0;
+  text-align: left;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .lang-card-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .lang-card-btn.active {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: #00f0ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .lang-card-btn.active .lang-native {
+  color: #00f0ff;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .lang-card-btn .lang-info {
+  display: flex;
+  flex-direction: column;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .lang-card-btn .lang-info .lang-native {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #fff;
+}
+.region-selector-wrapper .region-selector-modal .modal-body .lang-card-btn .lang-info .lang-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.region-selector-wrapper .region-selector-modal .modal-body .lang-card-btn .check-icon {
+  color: #00f0ff;
+}
+.region-selector-wrapper .region-selector-modal .modal-footer {
+  margin-top: 1.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-footer .current-summary {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.region-selector-wrapper .region-selector-modal .modal-footer .current-summary .summary-value {
+  color: #00ff88;
+  font-weight: 700;
+}
+.region-selector-wrapper .region-selector-modal .modal-footer .footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+[dir=rtl] {
+  direction: rtl;
+  text-align: right;
+}
+[dir=rtl] body, [dir=rtl] button, [dir=rtl] input, [dir=rtl] select {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", sans-serif;
+}
+[dir=rtl] .navbar .region-selector-wrapper .region-selector-modal {
+  right: auto;
+  left: 0;
+  text-align: right;
+}
+[dir=rtl] .navbar .region-selector-wrapper .region-selector-modal .market-card-btn, [dir=rtl] .navbar .region-selector-wrapper .region-selector-modal .lang-card-btn {
+  text-align: right;
+}
+[dir=rtl] .hero-section .hero-title, [dir=rtl] .hero-section .hero-description {
+  text-align: right;
+}
+[dir=rtl] .hero-section .hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+@media (max-width: 1024px) {
+  [dir=rtl] .hero-section .hero-cta {
+    justify-content: center;
+  }
+}
+[dir=rtl] .hero-section .hero-stats {
+  text-align: right;
+}
+[dir=rtl] .channel-explorer .search-filter-box .search-icon {
+  left: auto;
+  right: 1.25rem;
+}
+[dir=rtl] .channel-explorer .search-filter-box input {
+  padding-left: 1.25rem;
+  padding-right: 3rem;
+  text-align: right;
+}
+[dir=rtl] .channel-explorer .card-thumbnail .badge-overlay {
+  flex-direction: row-reverse;
+}
+[dir=rtl] .channel-explorer .card-body {
+  text-align: right;
+}
+[dir=rtl] .channel-explorer .card-body .current-program {
+  justify-content: flex-start;
+}
+[dir=rtl] .pricing-section .plan-card {
+  text-align: right;
+}
+[dir=rtl] .pricing-section .plan-card .popular-badge {
+  left: 1.5rem;
+  right: auto;
+}
+[dir=rtl] .pricing-section .plan-card .plan-features li {
+  flex-direction: row;
+  gap: 0.5rem;
+}
+[dir=rtl] .pricing-section .plan-card .plan-features li svg {
+  margin-right: 0;
+  margin-left: 0.25rem;
+}
+[dir=rtl] .faq-section .faq-question {
+  text-align: right;
+}
+[dir=rtl] .faq-section .faq-answer {
+  text-align: right;
+}
+[dir=rtl] .whatsapp-float-container {
+  right: auto;
+  left: 2rem;
+  flex-direction: row-reverse;
+}
+@media (max-width: 640px) {
+  [dir=rtl] .whatsapp-float-container {
+    left: 1.25rem;
+    right: auto;
+  }
+}
+[dir=rtl] .footer {
+  text-align: right;
+}
+[dir=rtl] .footer .footer-col {
+  text-align: right;
+}
+[dir=rtl] .footer .footer-bottom {
+  flex-direction: row-reverse;
+}

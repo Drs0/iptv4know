@@ -1,41 +1,21 @@
-"use client";
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+import { MarketCode, LangCode, MARKETS } from "@/config/i18n";
 
-import React from "react";
-import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { ChannelSlider } from "@/components/ChannelSlider";
-import { ChannelExplorer } from "@/components/ChannelExplorer";
-import { Pricing } from "@/components/Pricing";
-import { FAQ } from "@/components/FAQ";
-import { Footer } from "@/components/Footer";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+export default async function RootPage() {
+  const cookieStore = await cookies();
+  const cookieMarket = cookieStore.get("nova_market")?.value as MarketCode | undefined;
+  const cookieLang = cookieStore.get("nova_lang")?.value as LangCode | undefined;
 
-export default function Home() {
-  return (
-    <main style={{ minHeight: "100vh", position: "relative" }}>
-      {/* Navigation */}
-      <Navbar />
+  if (cookieMarket && MARKETS[cookieMarket]) {
+    const market = MARKETS[cookieMarket];
+    const lang = cookieLang && market.supportedLangs.includes(cookieLang) ? cookieLang : market.defaultLang;
+    if (lang === market.defaultLang) {
+      redirect(`/${market.routePrefix}`);
+    } else {
+      redirect(`/${market.routePrefix}/${lang}`);
+    }
+  }
 
-      {/* Hero Section */}
-      <Hero />
-
-      {/* Famous Channels Infinite Marquee Slider */}
-      <ChannelSlider />
-
-      {/* Live Channels Explorer */}
-      <ChannelExplorer />
-
-      {/* Subscription Pricing */}
-      <Pricing />
-
-      {/* FAQ Accordion */}
-      <FAQ />
-
-      {/* Footer */}
-      <Footer />
-
-      {/* Floating WhatsApp Action Button */}
-      <WhatsAppFloat />
-    </main>
-  );
+  redirect("/en");
 }
